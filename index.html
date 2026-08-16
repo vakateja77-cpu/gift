@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>For Surbhi ❤️</title>
+<meta name="description" content="A little birthday surprise, made just for you.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== AMBIENT LAYERS ===================== -->
+<div class="grain-overlay" aria-hidden="true"></div>
+<canvas id="hearts-canvas" aria-hidden="true"></canvas>
+
+<!-- ===================== LOADING SCREEN ===================== -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-heart" aria-hidden="true">
+    <svg viewBox="0 0 100 90" class="loading-heart-svg">
+      <path d="M50 88C50 88 6 58 6 28C6 12 18 2 32 2C42 2 48 10 50 15C52 10 58 2 68 2C82 2 94 12 94 28C94 58 50 88 50 88Z"/>
+    </svg>
+  </div>
+  <p class="loading-text" id="loading-text-1">For someone very special&hellip; ❤️</p>
+  <p class="loading-text loading-text-sub" id="loading-text-2">Loading your surprise&hellip;</p>
+</div>
+
+<!-- ===================== FIXED UI: PROGRESS + MUSIC ===================== -->
+<header class="hud" aria-hidden="false">
+  <nav class="progress-trail" id="progress-trail" aria-label="Journey progress">
+    <!-- dots injected by JS -->
+  </nav>
+  <button id="music-toggle" class="music-btn" type="button" aria-pressed="false">
+    <i class="fa-solid fa-music"></i>
+    <span id="music-label">Play Music</span>
+  </button>
+</header>
+
+<audio id="bg-music" src="assets/hangova.mpeg" loop preload="none"></audio>
+
+<!-- ===================== MAIN STAGE ===================== -->
+<main id="stage" class="stage">
+
+  <!-- PAGE 1 — THE QUESTION -->
+  <section class="screen active" id="page-1" data-page="1">
+    <div class="screen-inner question-inner">
+      <p class="eyebrow">a small question, before anything else</p>
+      <h1 class="hero-name">Hi Surbhi <span class="heart-inline">❤️</span></h1>
+      <p class="lead">Before we celebrate your birthday&hellip;<br>I have one very important question for you.</p>
+      <h2 class="the-question">Will you be my Valentine? <span>🥹❤️</span></h2>
+
+      <div class="question-msg" id="question-msg" aria-live="polite"></div>
+
+      <div class="btn-field" id="btn-field">
+        <button id="yes-btn" class="btn btn-yes" type="button">YES ❤️</button>
+        <button id="no-btn" class="btn btn-no" type="button">NO 🙈</button>
+      </div>
+    </div>
+    <div class="burst-layer" id="burst-layer" aria-hidden="true"></div>
+  </section>
+
+  <!-- PAGE 2 — BIRTHDAY LETTER -->
+  <section class="screen" id="page-2" data-page="2">
+    <div class="screen-inner">
+      <p class="eyebrow">page two</p>
+      <h2 class="section-title">Happy Birthday, My Dear Surbhi ❤️</h2>
+      <div class="letter-card glass">
+        <p class="letter-text" id="letter-text"></p>
+      </div>
+      <button class="btn btn-next" data-goto="3">Next →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 3 — WHY YOU -->
+  <section class="screen" id="page-3" data-page="3">
+    <div class="screen-inner">
+      <p class="eyebrow">page three</p>
+      <h2 class="section-title">Why You? ❤️</h2>
+
+      <div class="cards-grid" id="why-cards">
+        <article class="why-card">
+          <span class="why-icon">😊</span>
+          <h3>Your Smile</h3>
+          <p>Nee smile chusthe chaalu, nuv eppudu yedusthav kani navvithe chala baguntav alane undu always.</p>
+        </article>
+        <article class="why-card">
+          <span class="why-icon">❤️</span>
+          <h3>Your Heart</h3>
+          <p>Antha manchitham enduku niku avasaram aa hurt chesina yedusthav kani evarini harm cheyav.</p>
+        </article>
+        <article class="why-card">
+          <span class="why-icon">🫶</span>
+          <h3>Your Presence</h3>
+          <p>Dooram ga undi nee meeda love kanapadatam ledu niku presence lo ki ra ardham avvudhi.</p>
+        </article>
+        <article class="why-card">
+          <span class="why-icon">🥹</span>
+          <h3>You Make Me Happy</h3>
+          <p>Nee picchi chestalatho navvisthav ala ani yedipisthav kooda.</p>
+        </article>
+        <article class="why-card">
+          <span class="why-icon">🌹</span>
+          <h3>Simply You</h3>
+          <p>Because naku reason akkarledu. I just love you for being you.</p>
+        </article>
+      </div>
+
+      <button class="btn btn-next" data-goto="4">There's More ❤️</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4 — OUR MEMORIES -->
+  <section class="screen" id="page-4" data-page="4">
+    <div class="screen-inner wide">
+      <p class="eyebrow">page four</p>
+      <h2 class="section-title">Our Little Memories 📸</h2>
+
+      <div class="gallery" id="gallery">
+        <!-- polaroids injected by JS from the `photos` config -->
+      </div>
+
+      <button class="btn btn-next" data-goto="5">Next Memory →</button>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <!-- PAGE 5 — OPEN WHEN YOU MISS ME -->
+  <section class="screen" id="page-5" data-page="5">
+    <div class="screen-inner">
+      <p class="eyebrow">page five</p>
+      <h2 class="section-title">Open This When You Miss Me 💌</h2>
+      <p class="lead">There's something inside for you&hellip;</p>
+
+      <button class="envelope" id="envelope" type="button" aria-label="Open the envelope">
+        <span class="envelope-back"></span>
+        <span class="envelope-letter" id="envelope-letter-paper">
+          <span class="envelope-letter-text">
+            Surbhi,<br><br>
+            If you're reading this because you miss me,<br>
+            just remember that somewhere, I'm probably thinking about you too.<br><br>
+            — Yours
+          </span>
+        </span>
+        
+        <span class="envelope-seal"><i class="fa-solid fa-heart"></i></span>
+      </button>
+
+      <button class="btn btn-next reveal-after-open" id="page5-continue" data-goto="6">Continue ❤️</button>
+    </div>
+  </section>
+
+  <!-- PAGE 6 — MAKE A WISH -->
+  <section class="screen" id="page-6" data-page="6">
+    <div class="screen-inner">
+      <p class="eyebrow">page six</p>
+      <h2 class="section-title">Make A Wish, Birthday Girl 🎂</h2>
+
+      <div class="cake-scene" id="cake-scene">
+        <div class="smoke-layer" id="smoke-layer" aria-hidden="true"></div>
+        <svg class="cake-svg" viewBox="0 0 300 260" aria-hidden="true">
+          <ellipse cx="150" cy="235" rx="120" ry="16" fill="var(--shadow-soft)"/>
+          <rect x="40" y="170" width="220" height="60" rx="10" fill="var(--rose-deep)"/>
+          <rect x="40" y="170" width="220" height="14" rx="7" fill="var(--rose-light)"/>
+          <rect x="65" y="110" width="170" height="60" rx="10" fill="var(--rose)"/>
+          <rect x="65" y="110" width="170" height="14" rx="7" fill="var(--cream)"/>
+          <rect x="95" y="55" width="110" height="55" rx="10" fill="var(--burgundy)"/>
+          <rect x="95" y="55" width="110" height="14" rx="7" fill="var(--rose-light)"/>
+          <g class="candle" data-candle="1">
+            <rect x="112" y="30" width="7" height="26" rx="3" fill="var(--gold)"/>
+            <ellipse class="flame" cx="115.5" cy="26" rx="5" ry="9" fill="#FFCE7A"/>
+          </g>
+          <g class="candle" data-candle="2">
+            <rect x="146" y="24" width="7" height="32" rx="3" fill="var(--gold)"/>
+            <ellipse class="flame" cx="149.5" cy="20" rx="5" ry="9" fill="#FFCE7A"/>
+          </g>
+          <g class="candle" data-candle="3">
+            <rect x="180" y="30" width="7" height="26" rx="3" fill="var(--gold)"/>
+            <ellipse class="flame" cx="183.5" cy="26" rx="5" ry="9" fill="#FFCE7A"/>
+          </g>
+        </svg>
+        <p class="cake-hint" id="cake-hint">tap the candles ✨</p>
+      </div>
+
+      <div class="wish-messages" id="wish-messages">
+        <p class="wish-line" id="wish-line-1">Make a wish, Surbhi&hellip; ✨</p>
+        <p class="wish-line" id="wish-line-2">I hope every beautiful dream in your heart finds its way to you. ❤️</p>
+        <p class="wish-line" id="wish-line-3">Because you deserve all the happiness in the world.</p>
+      </div>
+
+      <button class="btn btn-next reveal-after-wish" id="page6-continue" data-goto="7">One Last Surprise →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 7 — FINAL SURPRISE -->
+  <section class="screen screen-final" id="page-7" data-page="7">
+    <div class="finale-sky" id="finale-sky" aria-hidden="true"></div>
+    <div class="screen-inner">
+      <p class="finale-line finale-wait" id="finale-wait">Wait&hellip; ❤️</p>
+
+      <div class="finale-sequence" id="finale-sequence">
+        <h2 class="finale-title">Happy Birthday, Surbhi ❤️</h2>
+        <p class="finale-text">You're not just another person in my life.<br>You are one of the reasons my life feels more beautiful.</p>
+        <p class="finale-text">No matter where life takes us,<br>I hope I get to see that beautiful smile of yours<br>again and again and again.</p>
+        <p class="finale-text finale-love">Love you sooo much, Surbhi ❤️🥹</p>
+
+        <button class="btn btn-final" id="final-btn" type="button">One Last Thing&hellip;</button>
+
+        <div class="finale-hidden" id="finale-hidden">
+          <p>If I could give you one thing for your birthday,<br>I'd give you the ability to see yourself through my eyes.</p>
+          <p>Then you'd finally understand<br>just how incredibly special you are to me.</p>
+          <p class="finale-signoff">Happy Birthday, my Surbhi. ❤️</p>
+          <p>Always keep smiling.<br>Always keep dreaming.<br>And please&hellip; always be you. 🫶</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
